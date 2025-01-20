@@ -1,0 +1,45 @@
+<div class="container">
+    <h1>Visualizar Livro</h1>
+  
+    <a href="/livro/index" class="btn btn-primary">Voltar</a>
+  
+    <div>
+      <strong>Código:</strong>
+      <p>{{ livro.codl }}</p>
+    </div>
+  
+    <div>
+      <strong>Titulo:</strong>
+      <p>{{ livro.titulo }}</p>
+    </div>
+
+    <div>
+        <strong>Editora:</strong>
+        <p>{{ livro.editora }}</p>
+      </div>
+
+      <div>
+        <strong>Edição:</strong>
+        <p>{{ livro.edicao }}</p>
+      </div>
+
+      <div>
+        <strong>Ano de publicação:</strong>
+        <p>{{ livro.anoPublicacao }}</p>
+      </div>
+
+      <div>
+        <strong>Autores:</strong>
+        <p *ngFor="let autor of livro.autores">{{ autor.nome }}</p>
+      </div>
+
+      <div>
+        <strong>Assuntos:</strong>
+        <p *ngFor="let assunto of livro.assuntos">{{ assunto.descricao }}</p>
+      </div>
+
+      <div>
+        <strong>Preços:</strong>
+        <p *ngFor="let preco of livro.precos">{{ preco.descricao }} - {{ preco.venda }}</p>
+      </div>
+  </div>

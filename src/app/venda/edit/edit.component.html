@@ -1,0 +1,22 @@
+<div class="container">
+    <h1>Venda</h1>
+
+    <a href="/venda/index" class="btn btn-primary">Voltar</a>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <div class="form-group">
+            <label for="codV"><b>Código:</b></label>
+            <input formControlName="codV" id="codV" type="text" class="form-control" readonly>
+        </div>
+        <div class="form-group">
+            <label for="descricao"><b>Descrição:</b></label>
+            <input formControlName="descricao" id="descricao" type="text" class="form-control">
+            <div *ngIf="c['descricao'].touched && c['descricao'].invalid" class="alert alert-danger">
+                <div *ngIf="c['descricao'].errors && c['descricao'].errors['required']">
+                    Descrição é obrigatória.
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Enviar</button>
+    </form>
+</div>

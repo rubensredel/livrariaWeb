@@ -1,0 +1,27 @@
+<div class="container">
+    <h1>Assuntos</h1>
+    <a href="#" routerLink="/assunto/create/" class="btn btn-success">Criar novo</a>
+  
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Descrição</th>
+          <th>Ação</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let assunto of assuntos">
+          <td>{{ assunto.codAs }}</td>
+          <td>{{ assunto.descricao }}</td>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="p-1"><a href="#" [routerLink]="['/assunto/', assunto.codAs, 'view']" class="btn btn-info">Visualizar</a></div>
+              <div class="p-1"><a href="#" [routerLink]="['/assunto/', assunto.codAs, 'edit']" class="btn btn-primary">Editar</a></div>
+              <div class="p-1"><button type="button" (click)="deletePost(assunto.codAs)" class="btn btn-danger">Deletar</button></div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

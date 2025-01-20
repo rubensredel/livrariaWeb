@@ -1,0 +1,71 @@
+<div class="container">
+    <h1>Livro</h1>
+
+    <a href="/livro/index" class="btn btn-primary">Voltar</a>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <div class="form-group">
+            <label for="codl"><b>Código:</b></label>
+            <input formControlName="codl" id="codl" type="text" class="form-control" readonly>
+        </div>
+        <div class="form-group">
+            <label for="titulo"><b>Título:</b></label>
+            <input formControlName="titulo" id="titulo" type="text" class="form-control">
+            <div *ngIf="c['titulo'].touched && c['titulo'].invalid" class="alert alert-danger">
+                <div *ngIf="c['titulo'].errors && c['titulo'].errors['required']">
+                    O nome é obrigatório.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="editora"><b>Editora:</b></label>
+            <input formControlName="editora" id="editora" type="text" class="form-control">
+            <div *ngIf="c['editora'].touched && c['editora'].invalid" class="alert alert-danger">
+                <div *ngIf="c['editora'].errors && c['editora'].errors['required']">
+                    Editora é obrigatório.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="edicao"><b>Edição:</b></label>
+            <input formControlName="edicao" id="edicao" type="text" class="form-control">
+            <div *ngIf="c['edicao'].touched && c['edicao'].invalid" class="alert alert-danger">
+                <div *ngIf="c['edicao'].errors && c['edicao'].errors['required']">
+                    Edição é obrigatório.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="anoPublicacao"><b>Ano de publicação:</b></label>
+            <input formControlName="anoPublicacao" id="anoPublicacao" type="text" class="form-control">
+            <div *ngIf="c['anoPublicacao'].touched && c['anoPublicacao'].invalid" class="alert alert-danger">
+                <div *ngIf="c['anoPublicacao'].errors && c['anoPublicacao'].errors['required']">
+                    Ano de publicação é obrigatório.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="autores"><b>Autores:</b></label>
+            <select title="Autores" class="form-select" multiple formControlName="autores" [compareWith]="compareAutores">
+                <option *ngFor="let autor of autores" [ngValue]="autor">
+                    {{ autor.nome }}
+                </option>
+            </select> 
+        </div>
+        <div class="form-group">
+            <label for="assuntos"><b>Assuntos:</b></label>
+            <select title="Assuntos" class="form-select" multiple formControlName="assuntos" [compareWith]="compareAssuntos">
+                <option *ngFor="let assunto of assuntos" [ngValue]="assunto">
+                    {{ assunto.descricao }}
+                </option>
+            </select> 
+        </div>
+        <div class="form-group">
+            <div *ngFor="let preco of precos">
+                <label for="preco{{preco.codV}}"><b>Preço para {{preco.descricao}}:</b></label>
+                <input id="preco{{preco.codV}}" type="text" class="form-control" value="{{preco.venda}}">
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Enviar</button>
+    </form>
+</div>

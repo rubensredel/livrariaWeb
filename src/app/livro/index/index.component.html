@@ -1,0 +1,33 @@
+<div class="container">
+    <h1>Livros</h1>
+    <a href="#" routerLink="/livro/create/" class="btn btn-success">Criar novo</a>
+  
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Título</th>
+          <th>Editora</th>
+          <th>Edição</th>
+          <th>Ano</th>
+          <th>Ação</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let livro of livros">
+          <td>{{ livro.codl }}</td>
+          <td>{{ livro.titulo }}</td>
+          <td>{{ livro.editora }}</td>
+          <td>{{ livro.edicao }}</td>
+          <td>{{ livro.anoPublicacao }}</td>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="p-1"><a href="#" [routerLink]="['/livro/', livro.codl, 'view']" class="btn btn-info">Visualizar</a></div>
+              <div class="p-1"><a href="#" [routerLink]="['/livro/', livro.codl, 'edit']" class="btn btn-primary">Editar</a></div>
+              <div class="p-1"><button type="button" (click)="deletePost(livro.codl)" class="btn btn-danger">Deletar</button></div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
